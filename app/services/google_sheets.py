@@ -7,11 +7,13 @@ class GoogleSheetsService:
     def __init__(self):
         scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
         # Load credentials from the specified JSON file
-        if os.path.exists(settings.GOOGLE_SHEETS_CREDENTIALS_FILE):
-            creds = ServiceAccountCredentials.from_json_keyfile_name(settings.GOOGLE_SHEETS_CREDENTIALS_FILE, scope)
-        elif settings.GOOGLE_CREDS_JSON:
+        file_path = Path(settings.GOOGLE_SHEETS_CREDENTIALS_FILE)
+        if settings.GOOGLE_CREDS_JSON:
             creds_dict = json.loads(settings.GOOGLE_CREDS_JSON)
             creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+
+        elif file_path.exists():
+            creds = ServiceAccountCredentials.from_json_keyfile_name(settings.GOOGLE_SHEETS_CREDENTIALS_FILE, scope)
         self.client = gspread.authorize(creds) 
         self.sheet = self.client.open(settings.GOOGLE_SHEETS_SPREADSHEET_NAME)
         self.main_sheet = self.sheet.worksheet("raw_data")  # Assuming we're working with the first sheet
