@@ -2,7 +2,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from app.core.config import settings
 import json
-
+import Path
 class GoogleSheetsService:
     def __init__(self):
         scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
