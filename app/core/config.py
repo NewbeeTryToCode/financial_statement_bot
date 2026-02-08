@@ -1,4 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from typing import Optional
+import json
 from pathlib import Path
 
 #base dir
@@ -10,9 +12,12 @@ class Settings(BaseSettings):
     extra="ignore" )
 
     DISCORD_TOKEN: str
-    APP_ID: int
+    APP_ID: str
     PUBLIC_KEY: str
-    GOOGLE_SHEETS_CREDENTIALS_FILE: str = str(BASE_DIR / "google-credentials.json")
+
+    GOOGLE_CREDS_JSON: Optional[str] = None
+
+    GOOGLE_SHEETS_CREDENTIALS_FILE: str = "google-credentials.json"
     GOOGLE_SHEETS_SPREADSHEET_NAME: str = "FinancialStatements"
 
 settings = Settings()
