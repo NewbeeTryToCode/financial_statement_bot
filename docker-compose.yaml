@@ -1,0 +1,13 @@
+services:
+  financial-statement-bot:
+    build: .
+    container_name: financial-statement-bot
+    restart: always
+    env_file:
+      - .env
+    volumes:
+    - .:/app
+    # credentials for .env file are ignored for security reasons
+    - ./google-credentials.json:/app/google-credentials.json
+    ports:
+      - "8080:8000"

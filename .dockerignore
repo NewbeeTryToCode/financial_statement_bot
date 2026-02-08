@@ -1,0 +1,12 @@
+# Jangan copy venv ke dalam Docker
+venv/
+.venv/
+__pycache__/
+
+# Jangan copy file Git
+.git
+.gitignore
+
+# Jangan copy file dokumentasi atau log lokal
+README.md
+*.log

@@ -1,0 +1,12 @@
+# Keamanan
+.env
+google-credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# OS
+.DS_Store

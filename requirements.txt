@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+
+python-dotenv
+discord.py
+
+gspread
+oauth2client
+
+pydantic-settings
